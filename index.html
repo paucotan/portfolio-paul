@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Developer Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="stars-layer"></div>
+    <div class="clouds-layer"></div>
+    
+    <header class="header" role="banner">
+        <nav class="nav" role="navigation" aria-label="Main navigation">
+            <div class="nav-brand">
+                <h1 class="brand-name">Portfolio</h1>
+            </div>
+            <ul class="nav-links" role="list">
+                <li><a href="#about" class="nav-link" aria-label="About section">About</a></li>
+                <li><a href="#projects" class="nav-link" aria-label="Projects section">Projects</a></li>
+                <li><a href="#contact" class="nav-link" aria-label="Contact section">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </nav>
+    </header>
+
+    <main class="main" role="main">
+        <section id="hero" class="hero-section" aria-label="Hero section">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="hero-greeting">Hello, I'm</span>
+                    <span class="hero-name">Your Name</span>
+                </h1>
+                <p class="hero-subtitle">Software Developer & Problem Solver</p>
+                <div class="hero-actions">
+                    <a href="#projects" class="cta-button primary" aria-label="View my projects">View My Work</a>
+                    <a href="#contact" class="cta-button secondary" aria-label="Get in touch">Get In Touch</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about-section" aria-labelledby="about-heading">
+            <div class="container">
+                <h2 id="about-heading" class="section-title">About Me</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p class="about-intro">
+                            I'm a passionate software developer with expertise in creating innovative solutions 
+                            that bridge the gap between complex technical challenges and user-friendly experiences.
+                        </p>
+                        <p class="about-description">
+                            With a strong foundation in modern web technologies and a keen eye for design, 
+                            I bring ideas to life through clean, efficient code and thoughtful user interfaces.
+                        </p>
+                        <div class="skills-grid">
+                            <div class="skill-item">Frontend Development</div>
+                            <div class="skill-item">Backend Architecture</div>
+                            <div class="skill-item">UI/UX Design</div>
+                            <div class="skill-item">Problem Solving</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="projects-section" aria-labelledby="projects-heading">
+            <div class="container">
+                <h2 id="projects-heading" class="section-title">Featured Projects</h2>
+                <div class="projects-grid">
+                    <article class="project-card" tabindex="0">
+                        <div class="project-image">
+                            <div class="project-placeholder">Dealhuntr</div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Dealhuntr</h3>
+                            <p class="project-description">
+                                Personal grocery deal hunter that aggregates offers from various stores to help users save money on everyday essentials.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Ruby on Rails</span>
+                                <span class="tech-tag">PostgreSQL</span>
+                                <span class="tech-tag">Bootstrap</span>
+                                <span class="tech-tag">JavaScript</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="http://www.dealhuntr.nl" class="project-link" aria-label="View live demo" target="_blank">Live Demo</a>
+                                <a href="https://github.com/paucotan/dealhuntr" class="project-link" aria-label="View source code" target="_blank">GitHub</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-card" tabindex="0">
+                        <div class="project-image">
+                            <div class="project-placeholder">PsiSketch</div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">PsiSketch</h3>
+                            <p class="project-description">
+                                Mobile-first remote viewing practice application with guided drawing exercises, breathing techniques, and session tracking for exploring intuitive perception abilities.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">TypeScript</span>
+                                <span class="tech-tag">Tailwind CSS</span>
+                                <span class="tech-tag">Node.js</span>
+                                <span class="tech-tag">PostgreSQL</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/paucotan/PsiSketch" class="project-link" aria-label="View source code" target="_blank">GitHub</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-card" tabindex="0">
+                        <div class="project-image">
+                            <div class="project-placeholder">Muse Assistant</div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Muse Assistant</h3>
+                            <p class="project-description">
+                                Chrome extension that enhances Zendesk support workflows through AI-powered ticket analysis, providing support agents with automated summaries and field extraction.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Chrome Extension</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">OpenAI API</span>
+                                <span class="tech-tag">Ollama</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/paucotan/Muse-assistant" class="project-link" aria-label="View source code" target="_blank">GitHub</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-card" tabindex="0">
+                        <div class="project-image">
+                            <div class="project-placeholder">FilmPicker</div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">FilmPicker</h3>
+                            <p class="project-description">
+                                CLI application for discovering movies based on genres with the ability to view details and save favorites using The Movie Database API.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Ruby</span>
+                                <span class="tech-tag">TMDb API</span>
+                                <span class="tech-tag">JSON</span>
+                                <span class="tech-tag">CLI</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/paucotan/filmpicker" class="project-link" aria-label="View source code" target="_blank">GitHub</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section" aria-labelledby="contact-heading">
+            <div class="container">
+                <h2 id="contact-heading" class="section-title">Let's Connect</h2>
+                <div class="contact-content">
+                    <div class="contact-text">
+                        <p class="contact-intro">
+                            Ready to bring your next project to life? I'd love to hear about your ideas 
+                            and explore how we can work together.
+                        </p>
+                    </div>
+                    <div class="contact-methods">
+                        <a href="mailto:your.email@example.com" class="contact-link" aria-label="Send email">
+                            <span class="contact-icon">✉</span>
+                            <span class="contact-text">your.email@example.com</span>
+                        </a>
+                        <a href="https://linkedin.com/in/yourprofile" class="contact-link" aria-label="LinkedIn profile">
+                            <span class="contact-icon">💼</span>
+                            <span class="contact-text">LinkedIn</span>
+                        </a>
+                        <a href="https://github.com/yourusername" class="contact-link" aria-label="GitHub profile">
+                            <span class="contact-icon">🔗</span>
+                            <span class="contact-text">GitHub</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-text">Built with passion and modern web technologies</p>
+                <a href="https://github.com/yourusername/portfolio" class="footer-link" aria-label="View website source code">
+                    View Source on GitHub
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+Dealhuntr
+
+Description: Personal grocery deal hunter that aggregates offers from various stores to help users save money on everyday essentials
+Technologies: Ruby on Rails, PostgreSQL, Bootstrap, JavaScript, HTML/CSS, Devise (authentication)
+GitHub URL: https://github.com/paucotan/dealhuntr
+Live Demo: www.dealhuntr.nl
+
+PsiSketch
+
+Description: Mobile-first remote viewing practice application with guided drawing exercises, breathing techniques, and session tracking for exploring intuitive perception abilities
+Technologies: React, TypeScript, Tailwind CSS, Fabric.js, Node.js, Express, PostgreSQL, Drizzle ORM
+GitHub URL: https://github.com/paucotan/PsiSketch
+Live Demo: [Not specified in README]
+
+Muse Assistant
+
+Description: Chrome extension that enhances Zendesk support workflows through AI-powered ticket analysis, providing support agents with automated summaries and field extraction
+Technologies: Chrome Extension (Manifest V3), JavaScript, OpenAI API, Ollama integration, Chrome Storage API
+GitHub URL: https://github.com/paucotan/Muse-assistant
+Live Demo: Chrome Web Store link (if published)
+
+FilmPicker
+
+Description: CLI application for discovering movies based on genres with the ability to view details and save favorites using The Movie Database API
+Technologies: Ruby, TMDb API, JSON file storage, dotenv gem
+GitHub URL: https://github.com/paucotan/filmpicker
+Live Demo: CLI application (no web demo)
