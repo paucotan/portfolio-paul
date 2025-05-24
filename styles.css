@@ -224,6 +224,42 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    animation: nameFlicker 3s ease-in-out infinite;
+}
+
+@keyframes nameFlicker {
+    0%, 100% { 
+        opacity: 1; 
+        filter: brightness(1);
+    }
+    5% { 
+        opacity: 0.9; 
+        filter: brightness(1.1);
+    }
+    10% { 
+        opacity: 1; 
+        filter: brightness(0.95);
+    }
+    20% { 
+        opacity: 0.95; 
+        filter: brightness(1.05);
+    }
+    25% { 
+        opacity: 1; 
+        filter: brightness(1);
+    }
+    85% { 
+        opacity: 1; 
+        filter: brightness(1);
+    }
+    90% { 
+        opacity: 0.9; 
+        filter: brightness(1.1);
+    }
+    95% { 
+        opacity: 1; 
+        filter: brightness(0.95);
+    }
 }
 
 .hero-subtitle {
