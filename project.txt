@@ -25,3 +25,109 @@ Description: CLI application for discovering movies based on genres with the abi
 Technologies: Ruby, TMDb API, JSON file storage, dotenv gem
 GitHub URL: https://github.com/paucotan/filmpicker
 Live Demo: CLI application (no web demo)
+
+
+Dealhuntr
+Logo: https://github.com/paucotan/dealhuntr/blob/master/dealhuntr.png?raw=true
+
+PsiSketch
+Logo: https://github.com/paucotan/PsiSketch/blob/main/attached_assets/psisketch.png?raw=true
+
+Muse Assistant
+Logo: https://github.com/paucotan/Muse-assistant/blob/main/attached_assets/muse.png?raw=true
+
+FilmPicker
+Logo: https://github.com/paucotan/filmpicker/blob/master/filmpicker.png?raw=true
+
+About section:
+Full Stack Developer | Le Wagon Graduate | Customer Support Specialist | Tech for Social Impact
+
+I'm a full stack developer with a foundation in Ruby on Rails, JavaScript, HTML/CSS, and SQL, recently graduating from Le Wagon's intensive bootcamp. With 4+ years as a Customer Support Agent at Fairphone, I've developed a unique perspective that combines technical problem-solving with a deep understanding of user needs.
+
+My professional experience spans technical troubleshooting, process automation, and sustainable project management across multiple countries. At Fairphone, I've resolved complex hardware/software issues while creating internal tools and optimizing workflows to improve both team efficiency and customer satisfaction.
+
+I'm passionate about building technology that serves meaningful purposes - whether improving user experiences, supporting sustainable practices, or solving practical problems. This passion is demonstrated in projects like Dealhuntr, a grocery deal aggregator that helps people save money through real-time data scraping.
+
+
+Github profile avatar link:
+https://avatars.githubusercontent.com/u/130602602?s=400&u=a12a9a41d81899aa8b076072a6c68fb439ce9c01&v=4
+
+
+Resume Content:
+
+SUMMARY
+Multilingual Support Specialist with 4+ years of experience in fast-paced technical environments, supporting users during high-
+stakes escalations and time-sensitive challenges. Known for translating complex technical problems into calm, actionable solutions
+— with empathy and clarity. Fluent in English and French, with a proven track record of automating workflows, reducing resolution
+times, and mentoring cross-functional teams. Passionate about delivering reliable, human-centered support experiences across
+technical platforms and global teams.
+
+
+LANGUAGES
+English Native French Native Japanese Native
+( ) ( ) ( )
+Dutch Intermediate
+( )
+
+SKILLS
+
+Tech & Tools: Zendesk (incl. Triggers, Explore), Odoo, CRM platforms, HTML/CSS, JavaScript, Ruby on Rails, PostgreSQL, REST APIs,
+Bootstrap, Git/GitHub, Google Workspace, Figma, JIRA, Figjam, AI tools (incl. LLMs)
+Support & Communication: Escalation Management, Live Chat Support, Root Cause Analysis, KPI Tracking, Empathetic
+Communication, Service Documentation, Phone & Email Support
+Collaboration & Systems: Agile Workflows, Cross-Functional Teamwork, Training & Onboarding, Workflow Automation, Customer-
+Centric Mindset
+
+
+EXPERIENCE
+Technical Support Agent (Tier 2) Amsterdam, Netherlands
+Fairphone 11/2020 - Present
+•
+Acted as primary contact for complex escalations, including legal and GDPR-sensitive cases, requiring precise communication
+and strict compliance.
+•
+Provided bilingual (English/French) customer support across email, phone, and live chat channels, ensuring compassionate and
+effective resolutions during high-stress scenarios.
+•
+Supported critical product launches, coordinating with logistics and engineering teams under pressure to maintain service
+quality and timely communication.
+•
+Automated internal workflows using Zendesk triggers and FlowEQ, reducing manual tasks and speeding up parts handling.
+•
+Built internal dashboards with Zendesk Explore to track KPIs and uncover trends, improving team insight and decision-making.
+•
+Cut ticket resolution time by 50% through smarter escalation logic and process improvements.
+•
+Wrote clear technical documentation and public-facing FAQs, making complex info accessible to users and support staff.
+Project manager Amsterdam, Netherlands
+Cascoland 08/2020 - 06/2021
+•
+Managed innovative oil upcycling project from concept to production and sale of 2,000+ candles
+•
+Navigated logistical challenges and tight deadlines during community-driven projects, ensuring smooth coordination across
+volunteers, suppliers, and public venues
+•
+Led 10+ volunteers in workshop series and installed 4 collection points, recycling 100+ liters of oil
+Waste Management Intern Amsterdam, Netherlands
+Mediamatic 10/2019 - 03/2020
+•
+Coordinated sustainability programs, diverting 300-400 kg of food waste monthly
+•
+Applied problem-solving and process optimization to improve daily operations, learning to balance sustainability goals with real-
+world constraints
+•
+Engaged in diverse roles from introduction to maintenance to demonstrate adaptability
+Theatre technician Surrey, BC, Canada
+City of Surrey Arts Centre 04/2018 - 08/2019
+•
+Collaborated cross-functionally to deliver 20+ productions annually, gaining skills in teamwork, communication, and versatility
+•
+Maintained composure and focus during live performances and technical malfunctions, collaborating in real-time to solve
+problems under pressure
+•Developed versatility and adaptability through roles in theatre productions, events, and venues
+
+INTERESTS
+Permaculture & systems design | App prototyping &
+UI/UX design | Biomimicry & nature-inspired
+innovation | Zero-waste & circular economy | Bitcoin &
+decentralized technologies
