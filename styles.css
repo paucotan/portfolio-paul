@@ -69,7 +69,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: 
+    background-image:
         radial-gradient(1px 1px at 45px 15px, rgba(255, 255, 255, 0.9), transparent),
         radial-gradient(1px 1px at 120px 60px, rgba(255, 255, 255, 0.7), transparent),
         radial-gradient(1px 1px at 75px 85px, rgba(255, 255, 255, 0.8), transparent);
@@ -297,7 +297,7 @@ body {
 }
 
 .hero-name {
-    display: block;
+    /* display: block; */
     background: linear-gradient(135deg, var(--color-white) 0%, var(--color-purple-light) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -523,6 +523,9 @@ section {
     background: rgba(99, 102, 241, 0.1);
     padding: 1rem 1.5rem;
     border-radius: var(--border-radius);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
     font-weight: 600;
     border: 1px solid rgba(99, 102, 241, 0.2);
