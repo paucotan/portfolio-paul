@@ -1,0 +1,7 @@
+Bitcoin Journey - An educational React web application that teaches users about
+  money, inflation, and Bitcoin through interactive stories and real-world examples.
+  Features include a hyperinflation calculator, historical timelines, a self-learning section featuring progress tracking, and structured learning chapters from beginner to advanced concepts.
+  Built with React 18, Tailwind CSS, and responsive design for financial literacy
+  education.
+
+  URL: https://bitcoin-journey.vercel.app/
