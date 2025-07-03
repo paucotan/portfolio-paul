@@ -57,6 +57,34 @@ body {
     background-attachment: fixed;
     z-index: -3;
     opacity: 0.12;
+    /* Image quality optimizations */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    /* Prevent mobile compression */
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+/* Mobile optimization for galaxy background */
+@media (max-width: 768px) {
+    .galaxy-layer {
+        /* Use absolute positioning on mobile to reduce compression */
+        position: absolute;
+        background-attachment: scroll;
+        /* Slightly higher opacity to compensate for mobile compression */
+        opacity: 0.15;
+        /* Force hardware acceleration */
+        transform: translateZ(0);
+        -webkit-transform: translateZ(0);
+    }
+    
+    /* Ensure body height covers galaxy on mobile */
+    body {
+        min-height: 100vh;
+        position: relative;
+    }
 }
 
 .stars-layer {
