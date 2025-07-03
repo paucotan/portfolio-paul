@@ -61,6 +61,8 @@ body {
     image-rendering: -webkit-optimize-contrast;
     image-rendering: -moz-crisp-edges;
     image-rendering: crisp-edges;
+    /* Force high quality rendering for Chromium browsers */
+    image-rendering: high-quality;
     /* Prevent mobile compression */
     will-change: transform;
     backface-visibility: hidden;
