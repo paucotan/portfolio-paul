@@ -313,11 +313,7 @@ body {
     text-align: center;
     padding: 2rem;
     position: relative;
-    background-image: url('assets/images/bg/andromeda_andrewjames.jpeg');
-    background-size: cover;
-    background-position: center 30%;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    /* Remove duplicate galaxy background - using .galaxy-layer instead */
 }
 
 .hero-section::before {
