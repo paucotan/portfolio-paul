@@ -1,14 +1,15 @@
 # Portfolio Website
 
-A modern, responsive portfolio website featuring a cosmic-inspired design with animated star backgrounds, interactive project carousels, and immersive user experiences.
+A modern, responsive portfolio website featuring a cosmic-inspired design with Andromeda galaxy backgrounds, interactive project carousels, and immersive user experiences. Built for a full-stack developer focused on individual empowerment through open-source technology.
 
 ## ✨ Features
 
 ### 🌌 Visual Experience
-- **Cosmic Background**: Multi-layered animated star field with randomized patterns
-- **Organic Design Language**: Garden and cultivation metaphors throughout
-- **Immersive Layout**: Background animations visible through transparent sections
-- **Purple Cosmic Theme**: Professional space-inspired color palette
+- **Andromeda Galaxy Background**: Stunning galaxy imagery extended throughout the entire site (Photo credit: Andrew McCarthy [@AJamesMcCarthy](https://twitter.com/AJamesMcCarthy))
+- **Multi-layered Cosmic Design**: Animated star field with nebula effects and shooting stars
+- **Living Ecosystem Metaphors**: Technology described as interconnected networks and organic growth
+- **Enhanced Readability**: Improved text contrast and breathing room with better typography
+- **Purple Cosmic Theme**: Professional space-inspired color palette with subtle galaxy integration
 
 ### 🎠 Interactive Project Showcase
 - **Multi-Image Carousels**: Browse through multiple screenshots per project
@@ -24,6 +25,12 @@ A modern, responsive portfolio website featuring a cosmic-inspired design with a
 - **Performance**: CSS-only animations for smooth 60fps experience
 
 ## 🚀 Projects Showcase
+
+### ₿ **Bitcoin Journey** *(Latest)*
+Educational React web application that teaches users about money, inflation, and Bitcoin through interactive stories and real-world examples. Features include a hyperinflation calculator, historical timelines, a self-learning section featuring progress tracking, and structured learning chapters from beginner to advanced concepts.
+- **Tech**: React 18, Tailwind CSS, Responsive Design, Financial Education
+- **Live Demo**: [bitcoin-journey.vercel.app](https://bitcoin-journey.vercel.app/)
+- **Images**: 8 screenshots showcasing dashboard, learning paths, calculators, and educational content
 
 ### 🌿 **Fern Finance**
 Your financial growth companion. AI-powered tracker that evolves with your money habits, transforming spending data into intelligent insights for better financial decisions.
@@ -124,6 +131,8 @@ portfolio-windsurf/
 ├── script.js               # Interactive functionality
 ├── assets/
 │   └── images/
+│       ├── bg/             # Andromeda galaxy background image
+│       ├── btc-journey/    # Bitcoin Journey screenshots (8)
 │       ├── fern/           # Fern Finance screenshots (6)
 │       ├── dealhuntr/      # Dealhuntr screenshots (5)
 │       ├── worktree/       # WorkTree screenshots (3)
@@ -167,17 +176,30 @@ Deploy to any static hosting service:
 
 ## 🔄 Recent Updates
 
-- ✨ Added interactive project carousels
-- 🖼️ Implemented full-screen image modal
-- 🌟 Enhanced star background randomization
-- 🎨 Improved layout spacing and visual hierarchy
-- 📱 Enhanced mobile responsiveness
-- 🌿 Updated copy with organic growth metaphors
+- ₿ **Added Bitcoin Journey** as featured latest project with comprehensive educational finance app
+- 🌌 **Extended Andromeda Galaxy Background** throughout entire site with subtle opacity
+- ✍️ **Completely rewrote About section** with authentic, values-driven content focusing on individual empowerment
+- 🎨 **Enhanced typography and readability** with improved line spacing and white text contrast
+- 🔗 **Added interactive "let's connect" link** for smooth navigation to contact section
+- 📋 **Reordered projects chronologically** (newest first) for better showcase
+- 🌿 **Refined living ecosystem metaphors** with interconnected networks and systems thinking
+
+## 💫 Philosophy
+
+This portfolio reflects a belief in **individual empowerment through open-source technology**. Every project showcased here aims to put knowledge and power back in people's hands, whether it's financial literacy, workflow optimization, or personal growth tools.
+
+Technology is viewed as a **living ecosystem** — a network of interconnected nodes working synergistically with the whole rather than as isolated parts. This multidisciplinary perspective draws connections between economics and code, systems thinking and user experience, personal growth and collective progress.
+
+## 🙏 Credits
+
+- **Andromeda Galaxy Photography**: Andrew McCarthy ([@AJamesMcCarthy](https://twitter.com/AJamesMcCarthy)) - Stunning astrophotography that brings the cosmic theme to life
+- **Font**: Inter from Google Fonts
+- **Icons**: Font Awesome
 
 ## 📧 Contact
 
-Ready to bring your next project to life? Let's cultivate something amazing together!
+Ready to bring your next project to life? I'm drawn to projects that **empower, illuminate, or harmonize**. If that resonates, let's connect!
 
 ---
 
-*Cultivated with passion and modern web technologies* 🌿✨
+*Built with passion for meaningful technology that serves humanity* 🌌✨
