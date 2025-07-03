@@ -70,20 +70,12 @@ body {
 /* Mobile optimization for galaxy background */
 @media (max-width: 768px) {
     .galaxy-layer {
-        /* Use absolute positioning on mobile to reduce compression */
-        position: absolute;
+        /* Remove fixed attachment - this is the main culprit! */
         background-attachment: scroll;
-        /* Slightly higher opacity to compensate for mobile compression */
-        opacity: 0.15;
-        /* Force hardware acceleration */
-        transform: translateZ(0);
-        -webkit-transform: translateZ(0);
-    }
-    
-    /* Ensure body height covers galaxy on mobile */
-    body {
-        min-height: 100vh;
-        position: relative;
+        /* Use viewport units for better mobile handling */
+        height: 100vh;
+        /* Slightly higher opacity since we're removing problematic fixed attachment */
+        opacity: 0.18;
     }
 }
 
