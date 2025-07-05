@@ -971,8 +971,9 @@ section {
 
 .contact-intro {
     font-size: 1.2rem;
-    color: var(--color-gray);
+    color: var(--color-white);
     margin-bottom: 3rem;
+  
 }
 
 .contact-methods {
