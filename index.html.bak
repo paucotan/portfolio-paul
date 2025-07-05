@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paul Cohen-Tannugi | Full Stack Developer & Tech Support Specialist</title>
+    <meta name="description" content="Multilingual Full Stack Developer specializing in Ruby on Rails, JavaScript, React, and AI-powered solutions. 4+ years experience in technical support at Fairphone.">
+    <meta name="keywords" content="Full Stack Developer, Ruby on Rails, JavaScript, React, Technical Support, AI Tools, Chrome Extensions, Paul Cohen-Tannugi">
+    <meta name="author" content="Paul Cohen-Tannugi">
+    <meta property="og:title" content="Paul Cohen-Tannugi | Full Stack Developer">
+    <meta property="og:description" content="Multilingual Full Stack Developer building thoughtful solutions with Ruby on Rails, JavaScript, and modern web technologies.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://avatars.githubusercontent.com/u/130602602?s=400&u=a12a9a41d81899aa8b076072a6c68fb439ce9c01&v=4">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Paul Cohen-Tannugi | Full Stack Developer">
+    <meta name="twitter:description" content="Multilingual Full Stack Developer building thoughtful solutions with Ruby on Rails, JavaScript, and modern web technologies.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+    <div class="galaxy-layer"></div>
+    <div class="stars-layer"></div>
+    <div class="clouds-layer"></div>
+
+    <header class="header" role="banner">
+        <nav class="nav" role="navigation" aria-label="Main navigation">
+            <div class="nav-brand">
+                <h1 class="brand-name">Portfolio</h1>
+            </div>
+            <ul class="nav-links" role="list">
+                <li><a href="#about" class="nav-link" aria-label="About section">About</a></li>
+                <li><a href="#projects" class="nav-link" aria-label="Projects section">Projects</a></li>
+                <li><a href="#contact" class="nav-link" aria-label="Contact section">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </nav>
+    </header>
+
+    <main class="main" role="main">
+        <section id="hero" class="hero-section" aria-label="Hero section">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="hero-name">Paul Cohen-Tannugi</span>
+                </h1>
+                <p class="hero-subtitle">Software Developer & Tech Support Specialist</p>
+                <div class="hero-actions">
+                    <a href="#projects" class="cta-button primary" aria-label="View my projects">View My Work</a>
+                    <a href="#contact" class="cta-button secondary" aria-label="Get in touch">Get In Touch</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about-section" aria-labelledby="about-heading">
+            <div class="container">
+                <h2 id="about-heading" class="section-title">About Me</h2>
+                <div class="about-content">
+                    <div class="about-image">
+                        <img src="https://avatars.githubusercontent.com/u/130602602?s=400&u=a12a9a41d81899aa8b076072a6c68fb439ce9c01&v=4" alt="Paul Cohen" class="profile-image">
+                        <a href="PaulCohenTannugiResume_single_general.pdf" class="resume-button" aria-label="Download resume" target="_blank">
+                            <i class="fa-solid fa-download"></i>Download Resume
+                        </a>
+                    </div>
+                    <div class="about-text">
+                        <div class="about-header">
+                            <h3 class="about-title">Multilingual Support Specialist | Full Stack Developer | Le Wagon Graduate</h3>
+                        </div>
+                        <p class="about-intro">
+                            I'm a full-stack developer with the soul of a systems thinker and the instincts of a guide — drawn to the spaces where clarity meets complexity, and tools become portals to deeper understanding.
+                        </p>
+                        <p class="about-passion">
+                            Before I wrote code, I spent 4+ years at Fairphone, supporting users through high-stakes technical challenges. There, I learned to navigate turbulence with calm, empathy, and precision — skills that now shape how I build software: with people at the center. I was also drawn to their deeper mission — proving that sustainability and ethics can be foundational to business, not just a 'nice-to-have'.
+                            <br>
+                            <br>
+                            I see technology as a living ecosystem — each feature like a root, stem, or bloom, working synergistically with the whole. I believe in building tools that return agency to the user and deepen awareness, rather than overwhelm it. Whether it’s                             <br>
+                            <br>
+                            I've built tools ranging from intuitive budgeting systems to workflow assistants and financial literacy journeys — always with the same goal: empowering users through clarity and thoughtful design, aligned with my values.
+                            <br>
+                            <br>
+
+                            My perspective is multidisciplinary: I see connections between economics and code, between systems thinking and user experience, between personal growth and collective progress. Shaped by a multicultural lens and fluent in English, French, and Japanese, I believe the most meaningful technology emerges at the intersection of different fields — where analytical precision meets holistic thinking, where individual improvement creates systemic change.
+                        </p>
+                        <div class="skills-grid">
+                            <div class="skill-item">Ruby on Rails</div>
+                            <div class="skill-item">JavaScript & React</div>
+                            <div class="skill-item">PostgreSQL & REST APIs</div>
+                            <div class="skill-item">Zendesk & CRM Platforms</div>
+                            <div class="skill-item">Chrome Extensions & AI Tools</div>
+                            <div class="skill-item">Process Automation</div>
+                            <div class="skill-item">Troubleshooting & Support</div>
+                            <div class="skill-item">Multilingual Support</div>
+                            <div class="skill-item">Technical Documentation</div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="projects-section" aria-labelledby="projects-heading">
+            <div class="container">
+                <h2 id="projects-heading" class="section-title">Featured Projects</h2>
+                <div class="projects-grid">
+                    <article class="project-card" tabindex="0">
+                        <div class="project-carousel">
+                            <div class="carousel-container">
+                                <div class="carousel-slide active">
+                                    <img src="assets/images/btc-journey/Screenshot 2025-07-03 at 13.38.59.png" alt="Bitcoin Journey Main Dashboard" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="assets/images/btc-journey/Screenshot 2025-07-03 at 13.39.06.png" alt="Bitcoin Journey Learning Path" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="assets/images/btc-journey/Screenshot 2025-07-03 at 13.39.14.png" alt="Bitcoin Journey Interactive Calculator" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="assets/images/btc-journey/Screenshot 2025-07-03 at 13.39.22.png" alt="Bitcoin Journey Historical Timeline" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="assets/images/btc-journey/Screenshot 2025-07-03 at 13.39.46.png" alt="Bitcoin Journey Progress Tracking" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="assets/images/btc-journey/Screenshot 2025-07-03 at 13.40.00.png" alt="Bitcoin Journey Educational Content" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="assets/images/btc-journey/Screenshot 2025-07-03 at 13.40.12.png" alt="Bitcoin Journey Hyperinflation Calculator" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="assets/images/btc-journey/Screenshot 2025-07-03 at 13.42.00.png" alt="Bitcoin Journey Advanced Topics" loading="lazy">
+                                </div>
+                            </div>
+                            <button class="carousel-btn carousel-prev" aria-label="Previous image">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </button>
+                            <button class="carousel-btn carousel-next" aria-label="Next image">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </button>
+                            <div class="carousel-dots">
+                                <button class="carousel-dot active" aria-label="View image 1"></button>
+                                <button class="carousel-dot" aria-label="View image 2"></button>
+                                <button class="carousel-dot" aria-label="View image 3"></button>
+                                <button class="carousel-dot" aria-label="View image 4"></button>
+                                <button class="carousel-dot" aria-label="View image 5"></button>
+                                <button class="carousel-dot" aria-label="View image 6"></button>
+                                <button class="carousel-dot" aria-label="View image 7"></button>
+                                <button class="carousel-dot" aria-label="View image 8"></button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Bitcoin Journey</h3>
+                            <p class="project-description">
+                                Educational React web application that teaches users about money, inflation, and Bitcoin through interactive stories and real-world examples. Features include a hyperinflation calculator, historical timelines, a self-learning section featuring progress tracking, and structured learning chapters from beginner to advanced concepts.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">React 18</span>
+                                <span class="tech-tag">Tailwind CSS</span>
+                                <span class="tech-tag">Responsive Design</span>
+                                <span class="tech-tag">Financial Education</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://bitcoin-journey.vercel.app/" class="project-link" aria-label="View live demo" target="_blank">Live Demo</a>
+                                <a href="https://github.com/paucotan/bitcoin-journey" class="project-link" aria-label="View source code" target="_blank">GitHub</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-card" tabindex="0">
+                        <div class="project-carousel">
+                            <div class="carousel-container">
+                                <div class="carousel-slide active">
+                                    <img src="assets/images/fern/fern_dashboard.png" alt="Fern Finance Dashboard" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="assets/images/fern/fern_transactions.png" alt="Fern Finance Transactions" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="assets/images/fern/fern_budget.png" alt="Fern Finance Budget View" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="assets/images/fern/fern_smartrules.png" alt="Fern Finance Smart Rules" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="assets/images/fern/fern_transaction_list.png" alt="Fern Finance Transaction List" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="assets/images/fern/fern_vendor_mgmt.png" alt="Fern Finance Vendor Management" loading="lazy">
+                                </div>
+                            </div>
+                            <button class="carousel-btn carousel-prev" aria-label="Previous image">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </button>
+                            <button class="carousel-btn carousel-next" aria-label="Next image">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </button>
+                            <div class="carousel-dots">
+                                <button class="carousel-dot active" aria-label="View image 1"></button>
+                                <button class="carousel-dot" aria-label="View image 2"></button>
+                                <button class="carousel-dot" aria-label="View image 3"></button>
+                                <button class="carousel-dot" aria-label="View image 4"></button>
+                                <button class="carousel-dot" aria-label="View image 5"></button>
+                                <button class="carousel-dot" aria-label="View image 6"></button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Fern Finance 🌿</h3>
+                            <p class="project-description">
+                                Your financial growth companion. Fern adapts and evolves with your money habits, using AI to transform raw spending data into intelligent insights about your financial behavior. Watch your understanding flourish as automatic categorization and personalized analysis help you grow from reactive spending to intentional financial choices.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">TypeScript</span>
+                                <span class="tech-tag">AI/ML</span>
+                                <span class="tech-tag">Open Source</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/paucotan/fern-finance" class="project-link" aria-label="View source code" target="_blank">GitHub</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-card" tabindex="0">
+                        <div class="project-carousel">
+                            <div class="carousel-container">
+                                <div class="carousel-slide active">
+                                    <img src="https://raw.githubusercontent.com/paucotan/dealhuntr/master/dealhuntr.png" alt="Dealhuntr Logo" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="assets/images/dealhuntr/dealhuntr_1.jpeg" alt="Dealhuntr Main View" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="assets/images/dealhuntr/dealhuntr_2.jpeg" alt="Dealhuntr Store List" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="assets/images/dealhuntr/dealhuntr_categories.jpeg" alt="Dealhuntr Categories" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="assets/images/dealhuntr/dealhuntr_favourites.jpeg" alt="Dealhuntr Favourites" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="assets/images/dealhuntr/dealhuntr_shoppinglist.jpeg" alt="Dealhuntr Shopping List" loading="lazy">
+                                </div>
+                            </div>
+                            <button class="carousel-btn carousel-prev" aria-label="Previous image">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </button>
+                            <button class="carousel-btn carousel-next" aria-label="Next image">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </button>
+                            <div class="carousel-dots">
+                                <button class="carousel-dot active" aria-label="View image 1"></button>
+                                <button class="carousel-dot" aria-label="View image 2"></button>
+                                <button class="carousel-dot" aria-label="View image 3"></button>
+                                <button class="carousel-dot" aria-label="View image 4"></button>
+                                <button class="carousel-dot" aria-label="View image 5"></button>
+                                <button class="carousel-dot" aria-label="View image 6"></button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Dealhuntr</h3>
+                            <p class="project-description">
+                                Personal grocery deal hunter that aggregates offers from various stores to help users save money on everyday essentials.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Ruby on Rails</span>
+                                <span class="tech-tag">PostgreSQL</span>
+                                <span class="tech-tag">Bootstrap</span>
+                                <span class="tech-tag">JavaScript</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="http://www.dealhuntr.nl" class="project-link" aria-label="View live demo" target="_blank">Live Demo</a>
+                                <a href="https://github.com/paucotan/dealhuntr" class="project-link" aria-label="View source code" target="_blank">GitHub</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-card" tabindex="0">
+                        <div class="project-carousel">
+                            <div class="carousel-container">
+                                <div class="carousel-slide active">
+                                    <img src="assets/images/worktree/WhatsApp Image 2025-05-14 at 05.32.26 (1).jpeg" alt="WorkTree Main Interface" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="assets/images/worktree/WhatsApp Image 2025-05-14 at 05.32.26 (2).jpeg" alt="WorkTree Booking System" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="assets/images/worktree/WhatsApp Image 2025-05-14 at 05.32.26.jpeg" alt="WorkTree Workspace View" loading="lazy">
+                                </div>
+                            </div>
+                            <button class="carousel-btn carousel-prev" aria-label="Previous image">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </button>
+                            <button class="carousel-btn carousel-next" aria-label="Next image">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </button>
+                            <div class="carousel-dots">
+                                <button class="carousel-dot active" aria-label="View image 1"></button>
+                                <button class="carousel-dot" aria-label="View image 2"></button>
+                                <button class="carousel-dot" aria-label="View image 3"></button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">WorkTree</h3>
+                            <p class="project-description">
+                                Airbnb-style platform for listing and booking co-working spaces, featuring user authentication, booking management, and a clean front-end interface. Previously hosted on Heroku.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Ruby on Rails</span>
+                                <span class="tech-tag">PostgreSQL</span>
+                                <span class="tech-tag">Bootstrap</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">Devise (Auth)</span>
+                                <span class="tech-tag">Heroku</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/paucotan/worktree" class="project-link" aria-label="View source code" target="_blank">GitHub</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-card" tabindex="0">
+                        <div class="project-carousel">
+                            <div class="carousel-container">
+                                <div class="carousel-slide active">
+                                    <img src="https://raw.githubusercontent.com/paucotan/PsiSketch/main/attached_assets/psisketch.png" alt="PsiSketch Logo" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="assets/images/psisketch/Screenshot 2025-06-17 at 10.22.16.png" alt="PsiSketch Main Interface" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="assets/images/psisketch/Screenshot 2025-06-17 at 10.22.34.png" alt="PsiSketch Drawing Interface" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="assets/images/psisketch/Screenshot 2025-06-17 at 10.22.52.png" alt="PsiSketch Session View" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="assets/images/psisketch/Screenshot 2025-06-17 at 10.23.11.png" alt="PsiSketch Features" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="assets/images/psisketch/psisketch-session_leaves.png" alt="PsiSketch Leaves Session" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="assets/images/psisketch/psisketch-session_ocean.png" alt="PsiSketch Ocean Session" loading="lazy">
+                                </div>
+                            </div>
+                            <button class="carousel-btn carousel-prev" aria-label="Previous image">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </button>
+                            <button class="carousel-btn carousel-next" aria-label="Next image">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </button>
+                            <div class="carousel-dots">
+                                <button class="carousel-dot active" aria-label="View image 1"></button>
+                                <button class="carousel-dot" aria-label="View image 2"></button>
+                                <button class="carousel-dot" aria-label="View image 3"></button>
+                                <button class="carousel-dot" aria-label="View image 4"></button>
+                                <button class="carousel-dot" aria-label="View image 5"></button>
+                                <button class="carousel-dot" aria-label="View image 6"></button>
+                                <button class="carousel-dot" aria-label="View image 7"></button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">PsiSketch</h3>
+                            <p class="project-description">
+                                Mobile-first remote viewing practice application with guided drawing exercises, breathing techniques, and session tracking for exploring intuitive perception abilities.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">TypeScript</span>
+                                <span class="tech-tag">Tailwind CSS</span>
+                                <span class="tech-tag">Node.js</span>
+                                <span class="tech-tag">PostgreSQL</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/paucotan/PsiSketch" class="project-link" aria-label="View source code" target="_blank">GitHub</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-card" tabindex="0">
+                        <div class="project-carousel">
+                            <div class="carousel-container">
+                                <div class="carousel-slide active">
+                                    <img src="https://raw.githubusercontent.com/paucotan/Muse-assistant/main/attached_assets/muse.png" alt="Muse Assistant Chrome Extension" loading="lazy">
+                                </div>
+                            </div>
+                            <div class="carousel-dots">
+                                <button class="carousel-dot active" aria-label="View image 1"></button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Muse Assistant</h3>
+                            <p class="project-description">
+                                Chrome extension that enhances Zendesk support workflows through AI-powered ticket analysis, providing support agents with automated summaries and field extraction.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Chrome Extension</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">OpenAI API</span>
+                                <span class="tech-tag">Ollama</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/paucotan/Muse-assistant" class="project-link" aria-label="View source code" target="_blank">GitHub</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-card" tabindex="0">
+                        <div class="project-carousel">
+                            <div class="carousel-container">
+                                <div class="carousel-slide active">
+                                    <img src="https://raw.githubusercontent.com/paucotan/filmpicker/master/filmpicker.png" alt="FilmPicker Logo" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="assets/images/filmpicker/Screenshot 2025-06-17 at 10.31.06.png" alt="FilmPicker Main Menu" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="assets/images/filmpicker/Screenshot 2025-06-17 at 10.31.17.png" alt="FilmPicker Genre Selection" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="assets/images/filmpicker/Screenshot 2025-06-17 at 10.31.28.png" alt="FilmPicker Movie Results" loading="lazy">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="assets/images/filmpicker/Screenshot 2025-06-17 at 10.34.29.png" alt="FilmPicker Movie Details" loading="lazy">
+                                </div>
+                            </div>
+                            <button class="carousel-btn carousel-prev" aria-label="Previous image">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </button>
+                            <button class="carousel-btn carousel-next" aria-label="Next image">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </button>
+                            <div class="carousel-dots">
+                                <button class="carousel-dot active" aria-label="View image 1"></button>
+                                <button class="carousel-dot" aria-label="View image 2"></button>
+                                <button class="carousel-dot" aria-label="View image 3"></button>
+                                <button class="carousel-dot" aria-label="View image 4"></button>
+                                <button class="carousel-dot" aria-label="View image 5"></button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">FilmPicker</h3>
+                            <p class="project-description">
+                                CLI application for discovering movies based on genres with the ability to view details and save favorites using The Movie Database API.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Ruby</span>
+                                <span class="tech-tag">TMDb API</span>
+                                <span class="tech-tag">JSON</span>
+                                <span class="tech-tag">CLI</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/paucotan/filmpicker" class="project-link" aria-label="View source code" target="_blank">GitHub</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section" aria-labelledby="contact-heading">
+            <div class="container">
+                <h2 id="contact-heading" class="section-title">Let's Connect</h2>
+                <div class="contact-content">
+                    <div class="contact-text">
+                        <p class="contact-intro">
+                            Ready to bring your next project to life? I'd love to hear about your ideas
+                            and explore how we can work together.
+                        </p>
+                    </div>
+                    <div class="contact-methods">
+                        <a href="mailto:lancer-royalty5f@icloud.com" class="contact-link" aria-label="Send email">
+                            <i class="fa-solid fa-envelope"></i>Email
+                        </a>
+                        <a href="https://www.linkedin.com/in/paul-cohen-tannugi/" class="contact-link" aria-label="LinkedIn profile">
+                            <i class="fa-brands fa-linkedin"></i>LinkedIn
+                        </a>
+                        <a href="https://github.com/paucotan" class="contact-link" aria-label="GitHub">
+                            <i class="fa-brands fa-github"></i>GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Image Popup Modal -->
+    <div id="imageModal" class="image-modal" aria-hidden="true">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close image popup">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="modal-image-container">
+                <button class="modal-nav modal-prev" aria-label="Previous image">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <img id="modalImage" src="" alt="" class="modal-image">
+                <button class="modal-nav modal-next" aria-label="Next image">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+            <div class="modal-counter">
+                <span id="modalCounter">1 / 1</span>
+            </div>
+            <div class="modal-info">
+                <h3 id="modalTitle" class="modal-title"></h3>
+                <p id="modalDescription" class="modal-description"></p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-text">Built with passion and modern web technologies</p>
+                <a href="https://github.com/paucotan/portfolio-paul" class="footer-link" aria-label="View website source code">
+                    View Source on GitHub
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
