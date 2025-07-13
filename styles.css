@@ -1027,7 +1027,7 @@ section {
     color: var(--color-gray);
 }
 
-.footer-credit {
+.footer-credit a {
     color: var(--color-purple-light);
 }
 .footer-credit a:hover {
