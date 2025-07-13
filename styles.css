@@ -973,7 +973,7 @@ section {
     font-size: 1.2rem;
     color: var(--color-white);
     margin-bottom: 3rem;
-  
+
 }
 
 .contact-methods {
@@ -1025,6 +1025,14 @@ section {
 
 .footer-text {
     color: var(--color-gray);
+}
+
+.footer-credit {
+    color: var(--color-purple-light);
+}
+.footer-credit a:hover {
+  color: var(--color-white); /* optional */
+  text-decoration: underline;
 }
 
 .footer-link {
