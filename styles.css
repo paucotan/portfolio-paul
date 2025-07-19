@@ -318,7 +318,7 @@ body {
     /* Remove duplicate galaxy background - using .galaxy-layer instead */
 }
 
-.hero-section::before {
+/* .hero-section::before {
     content: '';
     position: absolute;
     top: 0;
@@ -327,7 +327,7 @@ body {
     height: 100%;
     background: rgba(10, 10, 15, 0.3);
     z-index: 1;
-}
+} */
 
 .hero-content {
     position: relative;
