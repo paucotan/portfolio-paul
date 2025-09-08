@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paul Cohen-Tannugi | Full Stack Developer & Tech Support Specialist</title>
+    <title>Paul Cohen-Tannugi | Tech Support Specialist & Full Stack Developer</title>
     <meta name="description" content="Multilingual Full Stack Developer specializing in Ruby on Rails, JavaScript, React, and AI-powered solutions. 4+ years experience in technical support at Fairphone.">
     <meta name="keywords" content="Full Stack Developer, Ruby on Rails, JavaScript, React, Technical Support, AI Tools, Chrome Extensions, Paul Cohen-Tannugi">
     <meta name="author" content="Paul Cohen-Tannugi">
@@ -50,7 +50,7 @@
                 <h1 class="hero-title">
                     <span class="hero-name">Paul Cohen-Tannugi</span>
                 </h1>
-                <p class="hero-subtitle">Software Developer & Tech Support Specialist</p>
+                <p class="hero-subtitle">Tech Support Specialist & Software Developer</p>
                 <div class="hero-actions">
                     <a href="#projects" class="cta-button primary" aria-label="View my projects">View My Work</a>
                     <a href="#contact" class="cta-button secondary" aria-label="Get in touch">Get In Touch</a>
