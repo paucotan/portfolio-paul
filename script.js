@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function () {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+                entry.target.style.transform = 'translateY(0) scale(1)';
 
                 // Stagger animation for project cards
                 if (entry.target.classList.contains('project-card')) {
@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (entry.target.classList.contains('skill-item')) {
                     const skills = document.querySelectorAll('.skill-item');
                     const index = Array.from(skills).indexOf(entry.target);
-                    entry.target.style.transitionDelay = `${index * 0.1}s`;
+                    entry.target.style.transitionDelay = `${index * 0.08}s`;
                 }
             }
         });
@@ -76,8 +76,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // Observe elements for scroll animations
     document.querySelectorAll('.project-card, .skill-item, .contact-link').forEach(el => {
         el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+        el.style.transform = 'translateY(40px) scale(0.97)';
+        el.style.transition = 'opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
         observer.observe(el);
     });
 
@@ -124,20 +124,22 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Parallax effect for background layers
-    window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
-        const starsLayer = document.querySelector('.stars-layer');
-        const cloudsLayer = document.querySelector('.clouds-layer');
+    // Parallax effect for background layers (fallback for browsers without CSS scroll timelines)
+    if (!CSS.supports('animation-timeline', 'scroll()')) {
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const starsLayer = document.querySelector('.stars-layer');
+            const cloudsLayer = document.querySelector('.clouds-layer');
 
-        if (starsLayer) {
-            starsLayer.style.transform = `translateY(${scrolled * 0.2}px)`;
-        }
+            if (starsLayer) {
+                starsLayer.style.transform = `translateY(${scrolled * 0.2}px)`;
+            }
 
-        if (cloudsLayer) {
-            cloudsLayer.style.transform = `translateY(${scrolled * 0.1}px) translateX(-5%)`;
-        }
-    });
+            if (cloudsLayer) {
+                cloudsLayer.style.transform = `translateY(${scrolled * 0.1}px) translateX(-5%)`;
+            }
+        });
+    }
 
     // Enhanced button interactions
     document.querySelectorAll('.cta-button, .project-link').forEach(button => {
@@ -228,6 +230,28 @@ document.addEventListener('DOMContentLoaded', function () {
             this.style.boxShadow = 'none';
         });
     });
+
+    // Ambient Cursor Glow & Card Spotlight Effects (Only on mouse pointer devices)
+    if (window.matchMedia('(pointer: fine)').matches) {
+        const cursorGlow = document.createElement('div');
+        cursorGlow.classList.add('cursor-glow');
+        document.body.appendChild(cursorGlow);
+
+        window.addEventListener('mousemove', (e) => {
+            cursorGlow.style.setProperty('--cursor-x', `${e.clientX}px`);
+            cursorGlow.style.setProperty('--cursor-y', `${e.clientY}px`);
+        });
+
+        document.querySelectorAll('.project-card, .other-project-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    }
 
     // Scroll progress indicator
     const createScrollProgress = () => {

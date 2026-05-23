@@ -43,6 +43,39 @@ body {
     min-height: 100vh;
 }
 
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: var(--color-dark);
+}
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--color-purple), var(--color-purple-light));
+    border-radius: 5px;
+    border: 2px solid var(--color-dark);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, var(--color-purple-light), var(--color-purple));
+}
+
+/* Ambient Cursor Glow */
+.cursor-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: -1;
+    background: radial-gradient(
+        600px circle at var(--cursor-x, -1000px) var(--cursor-y, -1000px),
+        rgba(99, 102, 241, 0.05),
+        transparent 80%
+    );
+    transition: opacity 0.3s ease;
+}
+
 /* Animated Background Layers */
 .galaxy-layer {
     position: fixed;
@@ -241,9 +274,10 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    background: rgba(10, 10, 15, 0.95);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+    background: rgba(10, 10, 15, 0.7);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     z-index: 1000;
     transition: var(--transition-smooth);
 }
@@ -372,20 +406,34 @@ body {
 
 .hero-name {
     display: block;
-    color: var(--color-white);
+    background: linear-gradient(120deg, #818cf8, #a855f7, #38bdf8, #818cf8);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     letter-spacing: 0.02em;
     margin-bottom: 1.5rem;
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-    animation: starGlow 3s ease-in-out infinite alternate;
+    animation: gradientShift 6s linear infinite, starGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 @keyframes starGlow {
     0% {
-        text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        filter: drop-shadow(0 0 10px rgba(129, 140, 248, 0.3));
     }
 
     100% {
-        text-shadow: 0 0 30px rgba(255, 255, 255, 0.5), 0 0 40px rgba(255, 255, 255, 0.2);
+        filter: drop-shadow(0 0 20px rgba(168, 85, 247, 0.6)) drop-shadow(0 0 30px rgba(56, 189, 248, 0.3));
     }
 }
 
@@ -620,21 +668,51 @@ section {
 }
 
 .project-card {
-    background: rgba(26, 26, 46, 0.6);
+    background: rgba(26, 26, 46, 0.4);
     border-radius: var(--border-radius-large);
     overflow: hidden;
     transition: var(--transition-smooth);
-    border: 1px solid rgba(99, 102, 241, 0.2);
-    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px) saturate(120%);
+    -webkit-backdrop-filter: blur(16px) saturate(120%);
     display: flex;
     flex-direction: column;
     height: 100%;
+    position: relative;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: radial-gradient(
+        600px circle at var(--mouse-x, -1000px) var(--mouse-y, -1000px),
+        rgba(99, 102, 241, 0.35),
+        transparent 50%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.project-card:hover::before {
+    opacity: 1;
 }
 
 .project-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: var(--shadow-large);
-    border-color: var(--color-purple-light);
+    transform: translateY(-8px) scale(1.015);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(99, 102, 241, 0.15);
+    border-color: rgba(99, 102, 241, 0.3);
 }
 
 /* Carousel Styles */
@@ -1379,22 +1457,52 @@ section {
 }
 
 .other-project-card {
-    background: rgba(26, 26, 46, 0.4);
-    border: 1px solid rgba(99, 102, 241, 0.15);
+    background: rgba(26, 26, 46, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: var(--border-radius);
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
     transition: var(--transition-smooth);
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(12px) saturate(120%);
+    -webkit-backdrop-filter: blur(12px) saturate(120%);
     min-height: 180px;
+    position: relative;
+}
+
+.other-project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: radial-gradient(
+        500px circle at var(--mouse-x, -1000px) var(--mouse-y, -1000px),
+        rgba(99, 102, 241, 0.35),
+        transparent 50%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.other-project-card:hover::before {
+    opacity: 1;
 }
 
 .other-project-card:hover {
     transform: translateY(-4px);
-    border-color: var(--color-purple-light);
-    background: rgba(26, 26, 46, 0.6);
-    box-shadow: 0 10px 25px rgba(99, 102, 241, 0.15);
+    border-color: rgba(99, 102, 241, 0.3);
+    background: rgba(26, 26, 46, 0.4);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 0 0 15px rgba(99, 102, 241, 0.15);
 }
 
 .other-project-header {
@@ -1519,4 +1627,30 @@ section {
 .other-project-link-icon:hover {
     color: var(--color-purple-light);
     transform: scale(1.15);
+}
+
+/* Scroll-driven Parallax Animations for Modern Browsers */
+@supports (animation-timeline: scroll()) {
+    @keyframes starsScroll {
+        to {
+            transform: translateY(200px);
+        }
+    }
+    @keyframes cloudsScroll {
+        to {
+            transform: translateY(100px) translateX(-5%);
+        }
+    }
+    .stars-layer {
+        animation: starsMove 73s linear infinite, starsTwinkle 4.3s ease-in-out infinite, starsScroll linear;
+        animation-timeline: auto, auto, scroll(root);
+    }
+    .stars-layer::before {
+        animation: starsMove 59s linear infinite, starsTwinkleFast 3.1s ease-in-out infinite, starsScroll linear;
+        animation-timeline: auto, auto, scroll(root);
+    }
+    .clouds-layer {
+        animation: cloudsMove 40s ease-in-out infinite alternate, cloudsScroll linear;
+        animation-timeline: auto, scroll(root);
+    }
 }
