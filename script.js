@@ -1,5 +1,5 @@
 // Smooth scrolling and enhanced UX interactions
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 
     // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
             threshold: 0.5,
             rootMargin: '0px 0px -100px 0px'
         });
-        
+
         approachObserver.observe(approachHighlight);
     }
 
@@ -141,19 +141,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Enhanced button interactions
     document.querySelectorAll('.cta-button, .project-link').forEach(button => {
-        button.addEventListener('mouseenter', function() {
+        button.addEventListener('mouseenter', function () {
             this.style.transform = 'translateY(-3px) scale(1.02)';
         });
 
-        button.addEventListener('mouseleave', function() {
+        button.addEventListener('mouseleave', function () {
             this.style.transform = 'translateY(0) scale(1)';
         });
 
-        button.addEventListener('mousedown', function() {
+        button.addEventListener('mousedown', function () {
             this.style.transform = 'translateY(-1px) scale(0.98)';
         });
 
-        button.addEventListener('mouseup', function() {
+        button.addEventListener('mouseup', function () {
             this.style.transform = 'translateY(-3px) scale(1.02)';
         });
     });
@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Skills hover effect with ripple
     document.querySelectorAll('.skill-item').forEach(skill => {
-        skill.addEventListener('click', function(e) {
+        skill.addEventListener('click', function (e) {
             const ripple = document.createElement('div');
             const rect = this.getBoundingClientRect();
             const size = Math.max(rect.width, rect.height);
@@ -218,12 +218,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Contact links enhanced interaction
     document.querySelectorAll('.contact-link').forEach(link => {
-        link.addEventListener('mouseenter', function() {
+        link.addEventListener('mouseenter', function () {
             this.style.transform = 'translateY(-3px) scale(1.02)';
             this.style.boxShadow = '0 10px 25px rgba(99, 102, 241, 0.3)';
         });
 
-        link.addEventListener('mouseleave', function() {
+        link.addEventListener('mouseleave', function () {
             this.style.transform = 'translateY(0) scale(1)';
             this.style.boxShadow = 'none';
         });
@@ -448,7 +448,7 @@ function initializeImageModal() {
         // Get all images from the same project
         const projectCard = clickedImg.closest('.project-card');
         const allImages = projectCard.querySelectorAll('.carousel-slide img');
-        
+
         currentImages = Array.from(allImages);
         currentIndex = currentImages.indexOf(clickedImg);
         currentProjectInfo = projectInfo;
@@ -464,7 +464,7 @@ function initializeImageModal() {
         modal.classList.remove('active');
         modal.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
-        
+
         // Clear data after animation
         setTimeout(() => {
             modalImage.src = '';
@@ -499,12 +499,12 @@ function initializeImageModal() {
     document.querySelectorAll('.carousel-slide img').forEach(img => {
         img.addEventListener('click', (e) => {
             e.stopPropagation();
-            
+
             // Get project info from the closest project card
             const projectCard = img.closest('.project-card');
             const projectTitle = projectCard.querySelector('.project-title').textContent;
             const projectDescription = projectCard.querySelector('.project-description').textContent;
-            
+
             openModal(img, {
                 title: projectTitle,
                 description: projectDescription
@@ -525,7 +525,7 @@ function initializeImageModal() {
     // Keyboard navigation
     document.addEventListener('keydown', (e) => {
         if (modal.classList.contains('active')) {
-            switch(e.key) {
+            switch (e.key) {
                 case 'Escape':
                     closeModal();
                     break;

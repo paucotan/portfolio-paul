@@ -1,0 +1,103 @@
+{
+  "github_username": "paucotan",
+  "exclude_projects": [
+    "portfolio-paul",
+    "portfolio-windsurf",
+    "paucotan"
+  ],
+  "featured_projects": {
+    "bitcoin-journey": {
+      "title": "Bitcoin Journey",
+      "description": "Educational React web application that teaches users about money, inflation, and Bitcoin through interactive stories and real-world examples. Features include a hyperinflation calculator, historical timelines, a self-learning section featuring progress tracking, and structured learning chapters from beginner to advanced concepts.",
+      "tech_tags": ["React 18", "Tailwind CSS", "Responsive Design", "Financial Education"],
+      "live_demo": "https://bitcoin-journey.vercel.app/",
+      "screenshots": [
+        "assets/images/btc-journey/Screenshot 2025-07-03 at 13.38.59.png",
+        "assets/images/btc-journey/Screenshot 2025-07-03 at 13.39.06.png",
+        "assets/images/btc-journey/Screenshot 2025-07-03 at 13.39.14.png",
+        "assets/images/btc-journey/Screenshot 2025-07-03 at 13.39.22.png",
+        "assets/images/btc-journey/Screenshot 2025-07-03 at 13.39.46.png",
+        "assets/images/btc-journey/Screenshot 2025-07-03 at 13.40.00.png",
+        "assets/images/btc-journey/Screenshot 2025-07-03 at 13.40.12.png",
+        "assets/images/btc-journey/Screenshot 2025-07-03 at 13.42.00.png"
+      ],
+      "priority": 1
+    },
+    "fern-finance": {
+      "title": "Fern Finance 🌿",
+      "description": "Your financial growth companion. Fern adapts and evolves with your money habits, using AI to transform raw spending data into intelligent insights about your financial behavior. Watch your understanding flourish as automatic categorization and personalized analysis help you grow from reactive spending to intentional financial choices.",
+      "tech_tags": ["React", "TypeScript", "AI/ML", "Open Source"],
+      "screenshots": [
+        "assets/images/fern/fern_dashboard.png",
+        "assets/images/fern/fern_transactions.png",
+        "assets/images/fern/fern_budget.png",
+        "assets/images/fern/fern_smartrules.png",
+        "assets/images/fern/fern_transaction_list.png",
+        "assets/images/fern/fern_vendor_mgmt.png"
+      ],
+      "priority": 2
+    },
+    "dealhuntr": {
+      "title": "Dealhuntr",
+      "description": "Personal grocery deal hunter that aggregates offers from various stores to help users save money on everyday essentials.",
+      "tech_tags": ["Ruby on Rails", "PostgreSQL", "Bootstrap", "JavaScript"],
+      "screenshots": [
+        "https://raw.githubusercontent.com/paucotan/dealhuntr/master/dealhuntr.png",
+        "assets/images/dealhuntr/dealhuntr_1.jpeg",
+        "assets/images/dealhuntr/dealhuntr_2.jpeg",
+        "assets/images/dealhuntr/dealhuntr_categories.jpeg",
+        "assets/images/dealhuntr/dealhuntr_favourites.jpeg",
+        "assets/images/dealhuntr/dealhuntr_shoppinglist.jpeg"
+      ],
+      "priority": 3
+    },
+    "worktree": {
+      "title": "WorkTree",
+      "description": "Airbnb-style platform for listing and booking co-working spaces, featuring user authentication, booking management, and a clean front-end interface. Previously hosted on Heroku.",
+      "tech_tags": ["Ruby on Rails", "PostgreSQL", "Bootstrap", "JavaScript", "Devise (Auth)", "Heroku"],
+      "screenshots": [
+        "assets/images/worktree/WhatsApp Image 2025-05-14 at 05.32.26 (1).jpeg",
+        "assets/images/worktree/WhatsApp Image 2025-05-14 at 05.32.26 (2).jpeg",
+        "assets/images/worktree/WhatsApp Image 2025-05-14 at 05.32.26.jpeg"
+      ],
+      "priority": 4
+    },
+    "PsiSketch": {
+      "title": "PsiSketch",
+      "description": "Mobile-first remote viewing practice application with guided drawing exercises, breathing techniques, and session tracking for exploring intuitive perception abilities.",
+      "tech_tags": ["React", "TypeScript", "Tailwind CSS", "Node.js", "PostgreSQL"],
+      "screenshots": [
+        "https://raw.githubusercontent.com/paucotan/PsiSketch/main/attached_assets/psisketch.png",
+        "assets/images/psisketch/Screenshot 2025-06-17 at 10.22.16.png",
+        "assets/images/psisketch/Screenshot 2025-06-17 at 10.22.34.png",
+        "assets/images/psisketch/Screenshot 2025-06-17 at 10.22.52.png",
+        "assets/images/psisketch/Screenshot 2025-06-17 at 10.23.11.png",
+        "assets/images/psisketch/psisketch-session_leaves.png",
+        "assets/images/psisketch/psisketch-session_ocean.png"
+      ],
+      "priority": 5
+    },
+    "Muse-assistant": {
+      "title": "Muse Assistant",
+      "description": "Chrome extension that enhances Zendesk support workflows through AI-powered ticket analysis, providing support agents with automated summaries and field extraction.",
+      "tech_tags": ["Chrome Extension", "JavaScript", "OpenAI API", "Ollama"],
+      "screenshots": [
+        "https://raw.githubusercontent.com/paucotan/Muse-assistant/main/attached_assets/muse.png"
+      ],
+      "priority": 6
+    },
+    "filmpicker": {
+      "title": "FilmPicker",
+      "description": "CLI application for discovering movies based on genres with the ability to view details and save favorites using The Movie Database API.",
+      "tech_tags": ["Ruby", "TMDb API", "JSON", "CLI"],
+      "screenshots": [
+        "https://raw.githubusercontent.com/paucotan/filmpicker/master/filmpicker.png",
+        "assets/images/filmpicker/Screenshot 2025-06-17 at 10.31.06.png",
+        "assets/images/filmpicker/Screenshot 2025-06-17 at 10.31.17.png",
+        "assets/images/filmpicker/Screenshot 2025-06-17 at 10.31.28.png",
+        "assets/images/filmpicker/Screenshot 2025-06-17 at 10.34.29.png"
+      ],
+      "priority": 7
+    }
+  }
+}
