@@ -281,6 +281,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Image Modal Functionality
     initializeImageModal();
+
+    // Visitor Counter Functionality
+    initializeVisitorCounter();
 });
 
 // Carousel initialization and functionality
@@ -625,3 +628,44 @@ const additionalStyles = `
 const styleSheet = document.createElement('style');
 styleSheet.textContent = additionalStyles;
 document.head.appendChild(styleSheet);
+
+// Visitor Counter Functionality
+function initializeVisitorCounter() {
+    const viewsCountElement = document.getElementById('views-count');
+    if (!viewsCountElement) return;
+
+    const namespace = 'paucotan';
+    const key = 'portfolio';
+    const visitedKey = 'paucotan-portfolio-visited';
+    const oneDay = 24 * 60 * 60 * 1000; // 24 hours in ms
+    const apiBase = `https://api.counterapi.dev/v1/${namespace}/${key}`;
+
+    const hasVisited = localStorage.getItem(visitedKey);
+    let shouldIncrement = true;
+
+    if (hasVisited) {
+        const visitTime = parseInt(hasVisited, 10);
+        if (!isNaN(visitTime) && (Date.now() - visitTime) < oneDay) {
+            shouldIncrement = false;
+        }
+    }
+
+    const url = shouldIncrement ? `${apiBase}/up` : `${apiBase}/`;
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            if (data && typeof data.count === 'number') {
+                viewsCountElement.textContent = data.count.toLocaleString();
+                if (shouldIncrement) {
+                    localStorage.setItem(visitedKey, Date.now().toString());
+                }
+            } else {
+                viewsCountElement.textContent = '---';
+            }
+        })
+        .catch(err => {
+            console.error('Error fetching view count:', err);
+            viewsCountElement.textContent = '---';
+        });
+}
