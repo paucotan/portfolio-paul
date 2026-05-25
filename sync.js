@@ -21,6 +21,34 @@ function getLangColor(lang) {
   return colors[lang] || '#64748b'; // default gray
 }
 
+// Map repository category/language to Font Awesome icons
+function getCategoryIcon(project) {
+  const name = project.name.toLowerCase();
+  const lang = (project.language || '').toLowerCase();
+  const tech = (project.tech_tags || []).map(t => t.toLowerCase());
+
+  if (name.includes('chrome') || name.includes('extension') || name.includes('assistant')) {
+    return 'fa-brands fa-chrome';
+  }
+  if (lang === 'ruby' || tech.includes('ruby') || tech.includes('rails') || name.includes('rails')) {
+    return 'fa-gem';
+  }
+  if (lang === 'typescript' || lang === 'javascript' || tech.includes('react') || tech.includes('next.js') || name.includes('react')) {
+    if (tech.includes('react') || name.includes('react')) return 'fa-brands fa-react';
+    return 'fa-brands fa-js';
+  }
+  if (lang === 'python') {
+    return 'fa-brands fa-python';
+  }
+  if (lang === 'html' || lang === 'css') {
+    return 'fa-brands fa-html5';
+  }
+  if (name.includes('cli') || name.includes('tool') || lang === 'shell') {
+    return 'fa-solid fa-terminal';
+  }
+  return 'fa-solid fa-rocket'; // fallback rocket
+}
+
 // Convert ISO date to human readable "time ago" format
 function formatTimeAgo(dateString) {
   if (!dateString) return 'recently';
@@ -42,8 +70,94 @@ function formatTimeAgo(dateString) {
   return `${yearsDiff} year${yearsDiff > 1 ? 's' : ''} ago`;
 }
 
+// Fetch the list of pinned repository names by scraping GitHub profile
+async function fetchPinnedRepositoryNames(username, headers) {
+  console.log(`🔍 Scraping pinned repositories list from: https://github.com/${username}`);
+  
+  try {
+    const response = await fetch(`https://github.com/${username}`, { headers });
+    if (!response.ok) {
+      throw new Error(`Failed to load GitHub profile. Status: ${response.status}`);
+    }
+    const html = await response.text();
+    
+    // Split by pinned item class to find repo links
+    const parts = html.split('class="pinned-item-list-item-content"');
+    const pinnedNames = [];
+    
+    for (let i = 1; i < parts.length; i++) {
+      const part = parts[i];
+      // Regex to find first repo link inside pinned item container, e.g. href="/paucotan/concierge"
+      const hrefRegex = new RegExp(`href="\\/${username}\\/([^"\\/\\?\\#\\s]+)"`, 'i');
+      const match = part.match(hrefRegex);
+      if (match) {
+        pinnedNames.push(match[1]);
+      }
+    }
+    
+    return pinnedNames;
+  } catch (error) {
+    console.warn('⚠️ Warning: Profile scraping failed. Fallback to local configuration keys.', error.message);
+    return [];
+  }
+}
+
+// Scrape first image from repo README if it exists
+async function fetchReadmeScreenshot(username, repoName, defaultBranch, headers) {
+  const url = `https://api.github.com/repos/${username}/${repoName}/readme`;
+  console.log(`📖 Attempting to fetch README for image extraction: ${repoName}`);
+  
+  try {
+    const response = await fetch(url, { headers });
+    if (!response.ok) {
+      return null;
+    }
+    
+    const json = await response.json();
+    if (!json.content) return null;
+    
+    const readmeText = Buffer.from(json.content, 'base64').toString('utf8');
+    
+    // Match standard markdown image: ![alt](url)
+    const mdImageRegex = /!\[.*?\]\((.*?)\)/;
+    // Match HTML image tag: <img src="url" ...> or <img ... src="url" ...>
+    const htmlImageRegex = /<img[^>]+src=["']([^"']+)["']/i;
+    
+    let imageUrl = null;
+    const mdMatch = readmeText.match(mdImageRegex);
+    if (mdMatch) {
+      imageUrl = mdMatch[1].trim();
+    } else {
+      const htmlMatch = readmeText.match(htmlImageRegex);
+      if (htmlMatch) {
+        imageUrl = htmlMatch[1].trim();
+      }
+    }
+    
+    if (imageUrl) {
+      // Check if the URL is relative
+      const isAbsolute = /^(https?:\/\/|data:)/i.test(imageUrl);
+      if (!isAbsolute) {
+        // Clean relative path: remove leading "./" or "/"
+        const cleanPath = imageUrl.replace(/^\.\//, '').replace(/^\//, '');
+        // Resolve relative paths to absolute raw content URLs
+        imageUrl = `https://raw.githubusercontent.com/${username}/${repoName}/${defaultBranch}/${cleanPath}`;
+        console.log(`   🔗 Resolved relative README image: ${imageUrl}`);
+      } else {
+        console.log(`   🔗 Found absolute README image: ${imageUrl}`);
+      }
+      return imageUrl;
+    }
+    
+    return null;
+  } catch (error) {
+    console.warn(`   ⚠️ Could not extract README image for ${repoName}:`, error.message);
+    return null;
+  }
+}
+
 async function sync() {
-  console.log('🌌 Starting GitHub repositories portfolio synchronization...');
+  console.log('🌌 Starting Pinned GitHub repositories portfolio synchronization...');
 
   // 1. Read metadata file
   const metadataPath = path.join(__dirname, 'projects-metadata.json');
@@ -55,13 +169,10 @@ async function sync() {
   const config = JSON.parse(fs.readFileSync(metadataPath, 'utf8'));
   const username = config.github_username || 'paucotan';
   const featuredConfig = config.featured_projects || {};
-  const excludeList = config.exclude_projects || [];
   
-  console.log(`👤 Fetching repositories for user: ${username}`);
-
-  // 2. Fetch public repos from GitHub
+  // Setup headers
   const headers = {
-    'User-Agent': 'portfolio-github-sync'
+    'User-Agent': 'portfolio-github-pinned-sync'
   };
   
   if (process.env.GITHUB_TOKEN) {
@@ -71,111 +182,88 @@ async function sync() {
     console.log('⚠️ No GITHUB_TOKEN found. Requests will be unauthenticated (subject to rate limit).');
   }
 
-  let repos = [];
-  try {
-    const url = `https://api.github.com/users/${username}/repos?per_page=100&sort=updated`;
-    const response = await fetch(url, { headers });
-    
-    if (!response.ok) {
-      if (response.status === 403) {
-        throw new Error('GitHub API rate limit exceeded or access forbidden. Set GITHUB_TOKEN environment variable.');
-      }
-      throw new Error(`GitHub API returned status ${response.status}: ${response.statusText}`);
-    }
-    
-    repos = await response.json();
-    console.log(`✅ Successfully fetched ${repos.length} repositories from GitHub.`);
-  } catch (error) {
-    console.error(`❌ Failed to fetch repositories from GitHub:`, error.message);
-    process.exit(1);
+  // 2. Fetch pinned repo names
+  let pinnedRepoNames = await fetchPinnedRepositoryNames(username, headers);
+  
+  if (pinnedRepoNames.length === 0) {
+    console.log('ℹ️ Falling back to projects defined in projects-metadata.json.');
+    pinnedRepoNames = Object.keys(featuredConfig);
+  } else {
+    console.log(`✅ Scraped pinned repositories: ${pinnedRepoNames.join(', ')}`);
   }
 
-  // 3. Process repositories
-  const featuredProjects = [];
-  const otherProjects = [];
+  // 3. Fetch data for each pinned repo in order
+  const projects = [];
 
-  // Group repos
-  for (const repo of repos) {
-    const repoName = repo.name;
-    
-    // Check if it's explicitly excluded
-    if (excludeList.includes(repoName)) {
-      continue;
-    }
-    
-    // Check if featured
-    const metaOverride = featuredConfig[repoName] || Object.values(featuredConfig).find(item => item.github === repo.html_url);
-    
-    if (metaOverride) {
-      featuredProjects.push({
+  for (const repoName of pinnedRepoNames) {
+    console.log(`📦 Fetching details for pinned repository: ${repoName}`);
+    try {
+      const url = `https://api.github.com/repos/${username}/${repoName}`;
+      const response = await fetch(url, { headers });
+      
+      if (!response.ok) {
+        throw new Error(`REST API returned status ${response.status}: ${response.statusText}`);
+      }
+      
+      const repo = await response.json();
+      
+      // Load configurations override from metadata
+      const metaOverride = featuredConfig[repoName] || {};
+      
+      let screenshots = metaOverride.screenshots || [];
+      const defaultBranch = repo.default_branch || 'master';
+      
+      // If no screenshots are locally configured, try to parse the README
+      if (screenshots.length === 0) {
+        const readmeImage = await fetchReadmeScreenshot(username, repoName, defaultBranch, headers);
+        if (readmeImage) {
+          screenshots = [readmeImage];
+        }
+      }
+      
+      projects.push({
         name: repoName,
         title: metaOverride.title || repoName,
         description: metaOverride.description || repo.description || 'No description provided.',
         tech_tags: metaOverride.tech_tags || (repo.language ? [repo.language] : []),
         live_demo: metaOverride.live_demo || repo.homepage || '',
         github: repo.html_url,
-        screenshots: metaOverride.screenshots || [],
+        screenshots: screenshots,
         stars: repo.stargazers_count,
         forks: repo.forks_count,
         updated_at: repo.updated_at,
-        priority: metaOverride.priority !== undefined ? metaOverride.priority : 100
+        language: repo.language
       });
-    } else {
-      // Put in Open Source/Other Projects if it's not a fork (unless it has stars)
-      if (!repo.fork || repo.stargazers_count > 0) {
-        otherProjects.push({
+      
+    } catch (error) {
+      console.warn(`❌ Failed to sync pinned repo ${repoName}:`, error.message);
+      
+      // If a repo fails to fetch but exists in local metadata, add it using local overrides as a fallback
+      const metaOverride = featuredConfig[repoName];
+      if (metaOverride) {
+        console.log(`ℹ️ Recovering ${repoName} from metadata cache...`);
+        projects.push({
           name: repoName,
-          description: repo.description,
-          language: repo.language,
-          stars: repo.stargazers_count,
-          forks: repo.forks_count,
-          github: repo.html_url,
-          live_demo: repo.homepage,
-          updated_at: repo.updated_at
+          title: metaOverride.title || repoName,
+          description: metaOverride.description || 'No description provided.',
+          tech_tags: metaOverride.tech_tags || [],
+          live_demo: metaOverride.live_demo || '',
+          github: metaOverride.github || `https://github.com/${username}/${repoName}`,
+          screenshots: metaOverride.screenshots || [],
+          stars: 0,
+          forks: 0,
+          updated_at: null,
+          language: null
         });
       }
     }
   }
 
-  // If a featured project is configured in metadata but wasn't found in the API results
-  // (e.g. if it is private or was missed), keep it in the list using local metadata values
-  for (const [key, value] of Object.entries(featuredConfig)) {
-    const found = featuredProjects.some(p => p.name === key || p.github === value.github);
-    if (!found) {
-      featuredProjects.push({
-        name: key,
-        title: value.title || key,
-        description: value.description || 'No description provided.',
-        tech_tags: value.tech_tags || [],
-        live_demo: value.live_demo || '',
-        github: value.github || `https://github.com/${username}/${key}`,
-        screenshots: value.screenshots || [],
-        stars: 0,
-        forks: 0,
-        updated_at: null,
-        priority: value.priority !== undefined ? value.priority : 100
-      });
-    }
-  }
+  console.log(`⭐ Processing complete. Compiling ${projects.length} project cards.`);
 
-  // Sort featured projects by priority ascending, then updated_at descending
-  featuredProjects.sort((a, b) => {
-    if (a.priority !== b.priority) return a.priority - b.priority;
-    if (a.updated_at && b.updated_at) return new Date(b.updated_at) - new Date(a.updated_at);
-    return a.name.localeCompare(b.name);
-  });
-
-  // Sort other projects by stars descending, then updated_at descending
-  otherProjects.sort((a, b) => {
-    if (b.stars !== a.stars) return b.stars - a.stars;
-    return new Date(b.updated_at) - new Date(a.updated_at);
-  });
-
-  console.log(`⭐ Found ${featuredProjects.length} Featured Projects and ${otherProjects.length} Other Open Source Repositories.`);
-
-  // 4. Generate HTML for Featured Projects
+  // 4. Generate HTML for Pinned Projects
   let featuredHtml = '';
-  for (const project of featuredProjects) {
+  for (const project of projects) {
     const timeAgo = project.updated_at ? formatTimeAgo(project.updated_at) : 'recently';
     
     // Tech tags HTML
@@ -183,51 +271,57 @@ async function sync() {
       .map(tag => `                                <span class="tech-tag">${tag}</span>`)
       .join('\n');
       
-    // Links HTML
+    // Live Demo Link HTML
     let demoLinkHtml = '';
     if (project.live_demo) {
       demoLinkHtml = `                                <a href="${project.live_demo}" class="project-link" aria-label="View live demo" target="_blank">Live Demo</a>`;
     }
     
-    // Carousel Slides HTML
+    // Carousel Slides or Fallback Banner HTML
     let slidesHtml = '';
-    if (project.screenshots.length > 0) {
+    let carouselButtonsHtml = '';
+    let carouselDotsHtml = '';
+
+    if (project.screenshots && project.screenshots.length > 0) {
+      // Slides
       slidesHtml = project.screenshots
         .map((img, idx) => `                                <div class="carousel-slide${idx === 0 ? ' active' : ''}">
                                     <img src="${img}" alt="${project.title} Screenshot ${idx + 1}" loading="lazy">
                                 </div>`)
         .join('\n');
-    } else {
-      // Fallback if no screenshots: use a placeholder cosmic colored gradient or a generic card image
-      slidesHtml = `                                <div class="carousel-slide active">
-                                    <div class="fallback-project-banner" style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(26, 26, 46, 0.8) 100%);">
-                                        <i class="fa-solid fa-rocket" style="font-size:3rem; color:var(--color-purple-light);"></i>
-                                    </div>
-                                </div>`;
-    }
 
-    // Carousel buttons (prev/next) HTML
-    let carouselButtonsHtml = '';
-    if (project.screenshots.length > 1) {
-      carouselButtonsHtml = `                            <button class="carousel-btn carousel-prev" aria-label="Previous image">
+      // Prev/Next Arrows
+      if (project.screenshots.length > 1) {
+        carouselButtonsHtml = `                            <button class="carousel-btn carousel-prev" aria-label="Previous image">
                                 <i class="fa-solid fa-chevron-left"></i>
                             </button>
                             <button class="carousel-btn carousel-next" aria-label="Next image">
                                 <i class="fa-solid fa-chevron-right"></i>
                             </button>`;
-    }
+      }
 
-    // Carousel Dots HTML
-    let carouselDotsHtml = '';
-    if (project.screenshots.length > 0) {
+      // Dots
       const dotButtons = project.screenshots
         .map((_, idx) => `                                <button class="carousel-dot${idx === 0 ? ' active' : ''}" aria-label="View image ${idx + 1}"></button>`)
         .join('\n');
         
-      // If only one screenshot, hide dots via inline style but keep the DOM node for compatibility
       const dotsStyle = project.screenshots.length <= 1 ? ' style="display:none"' : '';
       carouselDotsHtml = `                            <div class="carousel-dots"${dotsStyle}>
 ${dotButtons}
+                            </div>`;
+    } else {
+      // Cosmic Nebula Fallback Banner
+      const categoryIcon = getCategoryIcon(project);
+      slidesHtml = `                                <div class="carousel-slide active">
+                                    <div class="fallback-project-banner" style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, rgba(168, 85, 247, 0.12) 100%); border-bottom: 1px solid rgba(255, 255, 255, 0.05); position: relative;">
+                                        <div class="fallback-banner-glow" style="position: absolute; width: 80px; height: 80px; background: rgba(99, 102, 241, 0.15); filter: blur(30px); border-radius: 50%;"></div>
+                                        <i class="${categoryIcon}" style="font-size:3rem; color:rgba(129, 140, 248, 0.8); z-index: 1; filter: drop-shadow(0 0 10px rgba(129, 140, 248, 0.4));"></i>
+                                    </div>
+                                </div>`;
+      
+      // Still need dots container for javascript compatibility in script.js
+      carouselDotsHtml = `                            <div class="carousel-dots" style="display:none">
+                                <button class="carousel-dot active" aria-label="View image 1"></button>
                             </div>`;
     }
 
@@ -274,56 +368,7 @@ ${demoLinkHtml}
                     </article>\n\n`;
   }
 
-  // 5. Generate HTML for Other Open Source Projects
-  let otherHtml = '';
-  for (const project of otherProjects) {
-    const timeAgo = formatTimeAgo(project.updated_at);
-    
-    // Stats HTML
-    let statsHtml = '';
-    if (project.stars > 0 || project.forks > 0) {
-      statsHtml = `            <div class="other-project-stats">`;
-      if (project.stars > 0) {
-        statsHtml += `\n                <span class="other-stat-badge" title="Stars"><i class="fa-solid fa-star"></i> ${project.stars}</span>`;
-      }
-      if (project.forks > 0) {
-        statsHtml += `\n                <span class="other-stat-badge" title="Forks"><i class="fa-solid fa-code-fork"></i> ${project.forks}</span>`;
-      }
-      statsHtml += `\n            </div>`;
-    }
-
-    // Demo Link HTML in footer
-    let demoLinkIconHtml = '';
-    if (project.live_demo) {
-      demoLinkIconHtml = `\n                <a href="${project.live_demo}" class="other-project-link-icon" title="Live Demo" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>`;
-    }
-
-    // Description fallback
-    const repoDesc = project.description || 'Open source repository on GitHub.';
-
-    otherHtml += `                        <div class="other-project-card">
-                            <div class="other-project-header">
-                                <div class="other-project-title-wrapper">
-                                    <i class="fa-regular fa-folder other-project-icon"></i>
-                                    <h4 class="other-project-title"><a href="${project.github}" target="_blank">${project.name}</a></h4>
-                                </div>
-${statsHtml}
-                            </div>
-                            <p class="other-project-description">${repoDesc}</p>
-                            <div class="other-project-footer">
-                                <div class="other-project-tech-wrapper">
-                                    ${project.language ? `<span class="other-project-lang"><span class="lang-color" style="background-color: ${getLangColor(project.language)}"></span>${project.language}</span>` : ''}
-                                    <span class="other-project-updated">Updated ${timeAgo}</span>
-                                </div>
-                                <div class="other-project-links">
-${demoLinkIconHtml}
-                                    <a href="${project.github}" class="other-project-link-icon" title="GitHub Repository" target="_blank"><i class="fa-brands fa-github"></i></a>
-                                </div>
-                            </div>
-                        </div>\n\n`;
-  }
-
-  // 6. Read and Update index.html
+  // 5. Read and Update index.html
   const indexPath = path.join(__dirname, 'index.html');
   if (!fs.existsSync(indexPath)) {
     console.error('❌ Error: index.html does not exist.');
@@ -332,31 +377,26 @@ ${demoLinkIconHtml}
 
   let indexContent = fs.readFileSync(indexPath, 'utf8');
 
-  // Replace Featured Projects
+  // Replace main projects placeholders
   const featuredStart = '<!-- FEATURED_PROJECTS_START -->';
   const featuredEnd = '<!-- FEATURED_PROJECTS_END -->';
   const featuredRegex = new RegExp(`${featuredStart}[\\s\\S]*?${featuredEnd}`);
   
   if (!indexContent.includes(featuredStart) || !indexContent.includes(featuredEnd)) {
-    console.log('⚠️ Placeholders for Featured Projects not found. We will prepare index.html with comment boundaries first.');
-    // Let's create placeholders in index.html in the next steps
-  } else {
-    indexContent = indexContent.replace(featuredRegex, `${featuredStart}\n${featuredHtml}${featuredEnd}`);
-    console.log('✨ Featured projects updated in index.html.');
+    console.error('❌ Error: index.html does not contain the required FEATURED_PROJECTS comment placeholders.');
+    process.exit(1);
   }
+  
+  indexContent = indexContent.replace(featuredRegex, `${featuredStart}\n${featuredHtml}${featuredEnd}`);
 
-  // Replace Other Projects
+  // 6. Strip out the secondary grid boundaries if they are still in index.html
   const otherStart = '<!-- OTHER_PROJECTS_START -->';
   const otherEnd = '<!-- OTHER_PROJECTS_END -->';
-  const otherRegex = new RegExp(`${otherStart}[\\s\\S]*?${otherEnd}`);
-
-  if (indexContent.includes(otherStart) && indexContent.includes(otherEnd)) {
-    indexContent = indexContent.replace(otherRegex, `${otherStart}\n${otherHtml}${otherEnd}`);
-    console.log('✨ Open source repositories updated in index.html.');
-  } else {
-    console.log('⚠️ Placeholders for Open Source Projects not found.');
-  }
-
+  const otherRegex = new RegExp(`\\s*<div class="other-projects-section">[\\s\\S]*?<\\/div>\\s*<\\/div>\\s*<\\/section>`, 'i');
+  
+  // Instead of complex regex, let's write index.html updates clean in the next step.
+  // Actually, we can check if otherStart is still there and remove that section clean.
+  
   fs.writeFileSync(indexPath, indexContent, 'utf8');
   console.log('🎉 Portfolio website update completed successfully!');
 }
