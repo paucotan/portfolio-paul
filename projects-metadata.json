@@ -6,9 +6,9 @@
     "paucotan"
   ],
   "featured_projects": {
-    "concierge": {
-      "title": "FlameMap / Concierge",
-      "description": "Concierge / FlameMap application tracking wildfires, evacuations, air quality index, and smoke plumes with interactive satellite views and timeline controls.",
+    "flamemap-na": {
+      "title": "FlameMap NA",
+      "description": "Interactive wildfire tracking map application monitoring fires, evacuation zones, air quality index, and smoke plumes across North America.",
       "tech_tags": ["JavaScript", "Interactive Map", "Real-Time Data"],
       "screenshots": [
         "assets/images/flamemap/flamemap_preview.jpg"
