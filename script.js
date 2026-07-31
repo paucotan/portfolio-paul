@@ -128,11 +128,11 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!CSS.supports('animation-timeline', 'scroll()')) {
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
-            const starsLayer = document.querySelector('.stars-layer');
+            const starsContainer = document.querySelector('.stars-container');
             const cloudsLayer = document.querySelector('.clouds-layer');
 
-            if (starsLayer) {
-                starsLayer.style.transform = `translateY(${scrolled * 0.2}px)`;
+            if (starsContainer) {
+                starsContainer.style.transform = `translateY(${scrolled * 0.2}px)`;
             }
 
             if (cloudsLayer) {
@@ -281,6 +281,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Image Modal Functionality
     initializeImageModal();
+
+    // Interactive Stars Background Functionality
+    initializeInteractiveStars();
 
     // Visitor Counter Functionality
     initializeVisitorCounter();
@@ -668,4 +671,138 @@ function initializeVisitorCounter() {
             console.error('Error fetching view count:', err);
             viewsCountElement.textContent = '---';
         });
+}
+
+// Initialize high-performance Canvas Star Field with constellation mesh
+function initializeInteractiveStars() {
+    const canvas = document.getElementById('stars-canvas');
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+    let stars = [];
+    const mouse = { x: null, y: null, active: false };
+
+    class Star {
+        constructor() {
+            this.reset(true);
+        }
+        reset(initial = false) {
+            this.x = Math.random() * width;
+            this.y = initial ? Math.random() * height : height + Math.random() * 100;
+            this.radius = Math.random() * 1.5 + 0.4;
+            this.vy = (Math.random() * 0.35 + 0.15) * (this.radius * 1.4);
+            this.alpha = Math.random() * 0.5 + 0.3;
+            this.twinkleSpeed = (Math.random() * 0.008 + 0.003) * (Math.random() < 0.5 ? 1 : -1);
+            this.color = Math.random() < 0.25 ? '#a5b4fc' : '#ffffff';
+        }
+        update() {
+            this.alpha += this.twinkleSpeed;
+            if (this.alpha > 0.95 || this.alpha < 0.15) {
+                this.twinkleSpeed = -this.twinkleSpeed;
+            }
+
+            this.y -= this.vy;
+
+            if (this.y < -10) {
+                this.reset(false);
+            }
+        }
+        draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            ctx.fillStyle = this.color;
+            ctx.globalAlpha = Math.max(0.1, this.alpha);
+            ctx.fill();
+        }
+    }
+
+    function resize() {
+        const dpr = window.devicePixelRatio || 1;
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = width * dpr;
+        canvas.height = height * dpr;
+        ctx.scale(dpr, dpr);
+        
+        const starCount = Math.floor((width * height) / 10000);
+        stars = [];
+        for (let i = 0; i < Math.min(starCount, 90); i++) {
+            stars.push(new Star());
+        }
+    }
+
+    window.addEventListener('mousemove', (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+        mouse.active = true;
+    });
+
+    window.addEventListener('mouseleave', () => {
+        mouse.active = false;
+    });
+
+    window.addEventListener('touchmove', (e) => {
+        if (e.touches.length > 0) {
+            mouse.x = e.touches[0].clientX;
+            mouse.y = e.touches[0].clientY;
+            mouse.active = true;
+        }
+    }, { passive: true });
+
+    window.addEventListener('touchend', () => {
+        mouse.active = false;
+    });
+
+    function animate() {
+        ctx.clearRect(0, 0, width, height);
+
+        stars.forEach(star => {
+            star.update();
+            star.draw();
+        });
+
+        for (let i = 0; i < stars.length; i++) {
+            for (let j = i + 1; j < stars.length; j++) {
+                const starA = stars[i];
+                const starB = stars[j];
+                const sdx = starA.x - starB.x;
+                const sdy = starA.y - starB.y;
+                const sdist = Math.sqrt(sdx * sdx + sdy * sdy);
+
+                if (sdist < 85) {
+                    let baseOpacity = 0.08 * (1 - sdist / 85);
+                    let lineWidth = 0.5;
+
+                    if (mouse.active && mouse.x !== null && mouse.y !== null) {
+                        const midX = (starA.x + starB.x) / 2;
+                        const midY = (starA.y + starB.y) / 2;
+                        const mdx = mouse.x - midX;
+                        const mdy = mouse.y - midY;
+                        const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
+
+                        if (mdist < 180) {
+                            const mouseForce = (180 - mdist) / 180;
+                            baseOpacity += mouseForce * 0.35;
+                            lineWidth += mouseForce * 0.7;
+                        }
+                    }
+
+                    ctx.beginPath();
+                    ctx.moveTo(starA.x, starA.y);
+                    ctx.lineTo(starB.x, starB.y);
+                    ctx.strokeStyle = `rgba(165, 180, 252, ${baseOpacity})`;
+                    ctx.lineWidth = lineWidth;
+                    ctx.stroke();
+                }
+            }
+        }
+
+        requestAnimationFrame(animate);
+    }
+
+    window.addEventListener('resize', resize);
+    resize();
+    animate();
 }
