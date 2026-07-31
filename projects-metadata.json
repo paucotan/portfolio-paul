@@ -8,12 +8,21 @@
   "featured_projects": {
     "flamemap-na": {
       "title": "FlameMap NA",
-      "description": "Interactive wildfire tracking map application monitoring fires, evacuation zones, air quality index, and smoke plumes across North America.",
-      "tech_tags": ["JavaScript", "Interactive Map", "Real-Time Data"],
+      "description": "Real-time North American wildland fire map, thermal satellite timelines, smoke forecasts, wind streamlines, and emergency evacuation alerts.",
+      "tech_tags": ["TypeScript", "Interactive Map", "Real-Time Data"],
       "screenshots": [
         "assets/images/flamemap/flamemap_preview.jpg"
       ],
       "priority": 1
+    },
+    "concierge": {
+      "title": "Concierge",
+      "description": "Concierge is a minimal macOS menu bar utility built with Tauri that acts as a command center for personal finance, automating bank syncing and AI-assisted transaction categorization for self-hosted Actual Budget users.",
+      "tech_tags": ["JavaScript", "Tauri", "macOS"],
+      "screenshots": [
+        "https://raw.githubusercontent.com/paucotan/concierge/main/images/dashboard_preview.png"
+      ],
+      "priority": 2
     },
     "bitcoin-journey": {
       "title": "Bitcoin Journey",
